@@ -1,3 +1,5 @@
+<%@page
+	import="org.apache.taglibs.standard.tag.common.core.ForEachSupport"%>
 <%@page import="java.util.Collection"%>
 <%@page import="com.liferay.portal.model.User"%>
 <%@page import="java.util.List"%>
@@ -10,11 +12,34 @@
 
 <h1>Lista de Usuarios</h1>
 
+<%--Aquí recogo la lista de usuarios que he creado en el portlet --%>
 <%
-	List<User> usuarios = (List<User>)request.getAttribute(MostrarTodosLosUsuarios.USUARIOS);
+	List<User> usuarios = (List<User>) request.getAttribute(MostrarTodosLosUsuarios.USUARIOS);
 %>
-<%=usuarios %>
-<br/>El mio${usuarios}
+
+<%--=usuarios --%>
+
+<%-- El mio${usuarios}--%>
+
+<%--Ahora tengo que pintar los resultados en una tabla --%>
+
+<table class="yui3-datatable-table table">
+	<thead class="yui3-datatable-table columns">
+		<tr>
+			<th class="yui3-datatable-header yui3-datatable-first-header yui3-datatable-col-name">ID Usuario</th>
+			<th class="yui3-datatable-header yui3-datatable-first-header yui3-datatable-col-name">Nombre</th>
+		</tr>
+	</thead>
+	<tbody class="yui3-datatable-data">
+		<c:forEach items="<%=usuarios%>" var="usuario">
+			<tr>
+				<td>${usuario.userId}</td>
+				<td>${usuario.fullName}</td>
+			</tr>
+		</c:forEach>
+	</tbody>
+</table>
+
 
 
 

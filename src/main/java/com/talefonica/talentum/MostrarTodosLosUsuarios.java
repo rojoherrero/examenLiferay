@@ -28,6 +28,8 @@ public class MostrarTodosLosUsuarios extends MVCPortlet {
 			// recogo todos los usuarios
 			int usersCount = UserLocalServiceUtil.getUsersCount();
 			List<User> listaUsuarios = UserLocalServiceUtil.getUsers(0, usersCount);
+			// listaUsuarios.get(0).getUserId();
+			// listaUsuarios.get(0).getFullName();
 			// se lo pongo como atributo a la renderRequest
 			renderRequest.setAttribute(USUARIOS, listaUsuarios);
 			// se lo mando a la vista para pintar
@@ -36,6 +38,5 @@ public class MostrarTodosLosUsuarios extends MVCPortlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 }
